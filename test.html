@@ -13,7 +13,7 @@
     try {
       var j = JSON.parse(line);
       console.log("Received JSON: ",j);
-      elements.light.setValue(j.light*100);
+      elements.light.setValue(j.light*1);
     } catch(e) {
       console.log("Received: ",line);
     }
@@ -23,8 +23,7 @@
     var avr = Puck.mag();
     var magDiff;
     Puck.on('mag', function(xyz) {
-    // work out difference in field
-    var dx = xyz.x-avr.x;
+    // work out difference in fiel    var dx = xyz.x-avr.x;
     var dy = xyz.y-avr.y;
     var dz = xyz.z-avr.z;
     magDiff = Math.sqrt(dx*dx+dy*dy+dz*dz);
@@ -76,7 +75,7 @@
   // Set up the controls we see on the screen    
   var elements = {
     heading : TD.label({x:10,y:10,width:190,height:50,label:"My Dashboard"}),
-    light : TD.gauge({x:10,y:70,width:190,height:220,label:"Light",value:0,min:0,max:100}),
+    light : TD.gauge({x:10,y:70,width:190,height:220,label:"Light",value:0,min:0,max:5000}),
     modal: TD.modal({x:10,y:10,width:190,height:430,label:"Click to connect",onchange:connectDevice})
   }
   for (var i in elements)
